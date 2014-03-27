@@ -22,7 +22,7 @@ Intel(R) Xeon(R) CPU E3 1230 @ 3.20GHz (4c + HT):
 **RSA2048/RSA2048 bit  5.7/s**
 **RSA4096/RSA4096 bit  0.6/s**
 
-Sample usage
+Sample usage (matching on ^1CE)
 --------
 
     $ ./vanitygpg.pl
