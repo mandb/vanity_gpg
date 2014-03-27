@@ -60,5 +60,5 @@ Issues
 --------
 On systems that do not have enough system entropy, you can try this:
 
-    apt-get install -y rng-tools; 
+    apt-get install -y rng-tools
     sudo /usr/sbin/rngd -r /dev/urandom
