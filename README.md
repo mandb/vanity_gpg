@@ -3,25 +3,27 @@ vanity_gpg
 
 Threaded vanity gpg key editor! Just choose your regex strings, it will generate keys until it finds a match, then save it!
 
+Based off of Mayeu (https://gist.github.com/Mayeu/8575504)'s "Dirty Dirty Dirty" implementation.
 
 
-usage:
+configuration
+--------
 
-    Edit vanitygen.pl, 
-    choose your desired key_len, key_name, key_pass, key_email and thread_count(1 per logical core will typically saturate)
-    
-    choose your desired @needles - these will be parsed as independent regexes on your key (if you wish to match on short key, change the matching in keyThread ie: @matches= ($long_id -> @matches= ($short_id
-    
-    on an 8 core e5 Xeon it is roughly 5 2048 bit RSA keys/s
-    
-    Once a key is found, a <key_id>.sec.gpg, and <key_id>.pub.gpg will be generated in the working folder - you can remove any other extraneous .sec and .pub files created during the process (one per thread).
-    
-    Based off of Mayeu (https://gist.github.com/Mayeu/8575504)'s "Dirty Dirty Dirty" implementation.
-    
-    
+Edit vanitygen.pl:
+*    choose your desired key_len, key_name, key_pass, key_email and thread_count(1 per logical core will typically saturate)
+*    choose your desired @needles - these will be parsed as independent regexes to be matched against your generated keys
+    *    (if you wish to match on short key, change the matching in keyThread ie: @matches= ($long_id -> @matches= ($short_id
+*    Once a key is found, a **<key_id>.sec.gpg**, and **<key_id>.pub.gpg** will be generated in the working folder - you can remove any other extraneous .sec and .pub files created during the process (one per thread).
 
+performance
+--------
+Intel(R) Xeon(R) CPU E3 1230 @ 3.20GHz (4c + HT):
 
-Sample output:
+**RSA2048/RSA2048 bit  5.7/s**
+**RSA4096/RSA4096 bit  0.6/s**
+
+Sample usage
+--------
 
     $ ./vanitygpg.pl
 
