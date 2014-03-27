@@ -22,6 +22,10 @@ Intel(R) Xeon(R) CPU E3 1230 @ 3.20GHz (4c + HT):
 **RSA2048/RSA2048 bit  5.7/s**
 **RSA4096/RSA4096 bit  0.6/s**
 
+4x Opteron 12-core 6344 (48 cores @ 2.6ghz):
+**RSA2048/RSA2048 bit  32.1/s**
+**RSA4096/RSA4096 bit  2.9/s**
+
 Sample usage (matching on ^1CE)
 --------
 
@@ -50,3 +54,11 @@ Sample usage (matching on ^1CE)
     $ ls *.gpg*
     
     0x1CE685F929DA4CD4.pub.gpg  0x1CE685F929DA4CD4.sec.gpg
+
+
+Issues
+--------
+On systems that do not have enough system entropy, you can try this:
+
+   apt-get install -y rng-tools; 
+   sudo /usr/sbin/rngd -r /dev/urandom
