@@ -13,7 +13,7 @@ Edit vanitygen.pl:
 *    choose your desired key_len, key_name, key_pass, key_email and thread_count(1 per logical core will typically saturate)
 *    choose your desired @needles - these will be parsed as independent regexes to be matched against your generated keys
     *    (if you wish to match on short key, change the matching in keyThread ie: @matches= ($long_id -> @matches= ($short_id
-*    Once a key is found, a **<key_id>.sec.gpg**, and **<key_id>.pub.gpg** will be generated in the working folder - you can remove any other extraneous .sec and .pub files created during the process (one per thread).
+*    Once a key is found, a **\<key_id\>.sec.gpg**, and **\<key_id\>.pub.gpg** will be generated in the working folder - you can remove any other extraneous .sec and .pub files created during the process (one per thread).
 
 performance
 --------
