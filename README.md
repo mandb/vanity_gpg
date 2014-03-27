@@ -3,7 +3,7 @@ vanity_gpg
 
 Threaded vanity gpg key editor! Just choose your regex strings, it will generate keys until it finds a match, then save it!
 
-A progression of (https://gist.github.com/Mayeu/8575504)[Mayou's] basic implementation.
+A progression of [Mayou's](https://gist.github.com/Mayeu/8575504) basic implementation.
 
 
 configuration
