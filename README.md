@@ -41,12 +41,12 @@ Sample usage
     Found S:58AB7AE0, L:4BE892EC58AB7AE0
     Found S:057A877C, L:30DBB0B2057A877C
     Found S:F51D72E8, L:5EA09842F51D72E8
-    Found S:29DA4CD4, L:1CE685F929DA4CD4
-    $VAR1 = '1CE';
+    Found S:29DA4CD4, L:**1CE**685F929DA4CD4
+    $VAR1 = '**1CE**';
     Export 29DA4CD4
     Found S:6C5334C6, L:AC1B0B2C6C5334C6
     ------ FOUND A KEY!!!!!!! ------
 
     $ ls *.gpg*
     
-    0x1CE685F929DA4CD4.pub.gpg  0x1CE685F929DA4CD4.sec.gpg
+    0x**1CE**685F929DA4CD4.pub.gpg  0x**1CE**685F929DA4CD4.sec.gpg
