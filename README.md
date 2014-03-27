@@ -23,7 +23,7 @@ usage:
 
 Sample output:
 
- $ ./vanitygpg.pl
+    $ ./vanitygpg.pl
 
     [...]
     Found 169 keys so far, running for 29.5s (Rate:5.7/s)
@@ -45,5 +45,6 @@ Sample output:
     Found S:6C5334C6, L:AC1B0B2C6C5334C6
     ------ FOUND A KEY!!!!!!! ------
 
- $ ls *.gpg*
-0x1CE685F929DA4CD4.pub.gpg  0x1CE685F929DA4CD4.sec.gpg
+    $ ls *.gpg*
+    
+    0x1CE685F929DA4CD4.pub.gpg  0x1CE685F929DA4CD4.sec.gpg
