@@ -3,7 +3,7 @@ vanity_gpg
 
 Threaded vanity gpg key editor! Just choose your regex strings, it will generate keys until it finds a match, then save it!
 
-A progression of [Mayou's](https://gist.github.com/Mayeu/8575504) basic implementation.
+A progression of [Mayeu's](https://gist.github.com/Mayeu/8575504) basic implementation.
 
 
 configuration
@@ -62,7 +62,7 @@ Sample usage (matching on ^1CE)
 
 Issues
 --------
-On systems that do not have enough system entropy, you can try this:
+On systems that do not have enough system entropy, you can try this ([warning about entropy shortcuts](http://www.philandstuff.com/2013/03/14/why-does-gpg-need-so-much-entropy.html)):
 
     apt-get install -y rng-tools
     sudo /usr/sbin/rngd -r /dev/urandom
