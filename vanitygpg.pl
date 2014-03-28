@@ -12,32 +12,30 @@ use POSIX;
 my ($thread_count, $stop, @threads, $started_at, @needles);
 
 $stop = 0;
-$thread_count=8;
+$thread_count=48;
 $started_at = gettimeofday();
 
 my ($key_len, $key_name, $key_pass, $key_email, @status, $keycount, $matchstring) :shared;
 
 $key_len=2048;
-$key_name='username';
-$key_pass='password';
-$key_email='e@ma.il';
+$key_name='user';
+$key_pass='pass';
+$key_email='mail@domain.tld';
 $keycount=0;
 
 
-@needles = (    '^FACE',
-                '^C0FFEE',
-                '^BAD',
-                '^F00D',
-                '^1CE',
-                '^B17C435',
-                '^A1FA',
-                '^CE0',
-                '^B00B5',
-                '^CAFE',
-                '^66');
+#add your desired key matches in this array, they will all be applied to each key, when a matching key for ANY is found, hashing will stop.
 
-
-$matchstring = join('|', @needles);
+@needles = (    '.*?(.)(?:(.*?\1.*?){6,})',
+                '^B17CE0',
+                '^6666'
+                );
+				
+				
+#assemble regex into single match
+				
+$matchstring = '(?:'.join('|', @needles).')';
+print "Matching against regex string: $matchstring\n";
 
 until ($stop) {
    # thread
@@ -59,7 +57,7 @@ until ($stop) {
                         exit();
                 }
         }
-		
+
         $loopy++;
         if ($loopy%10==0){
                 print "Found $keycount keys so far, running for " . sprintf("%.1f",(gettimeofday()-$started_at))."s (Rate:" . sprintf("%.1f",$keycount/(gettimeofday()-$started_at)) ."/s)\n";
@@ -68,7 +66,7 @@ until ($stop) {
                 #dat entropy
                 rand(10000000);
         }
-        usleep(500000); 
+        usleep(500000);
    }
 }
 
@@ -78,10 +76,6 @@ sub keyThread{
     my $number = shift;
     my $tid = threads->tid();
     print "Thread $tid started, using key_scratch $number for this key ID\n";
-
-
-    #print "Matchstring: $matchstring\n";
-
     my $KEYRING_OPTS = "--no-default-keyring --secret-keyring ./foo$number.sec --keyring ./foo$number.pub" ;
 
   until ($stop){
@@ -106,14 +100,12 @@ sub keyThread{
     chomp $long_id;
 
     my @matches;
+	
     # Print it
     print "Found S:$short_id, L:$long_id\n";
 
     # Only export if it match a pattern
-
-
-    if (@matches = ($long_id =~ m/($matchstring)/o)){
-
+    if (@matches = ($long_id =~ m/$matchstring/o)){
 
         @status[$number]='found';
 
